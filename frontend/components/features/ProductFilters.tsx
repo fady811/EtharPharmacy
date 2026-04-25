@@ -179,10 +179,10 @@ export function ProductFilters({ categories, onFilterChange, filters }: ProductF
                     className="w-full rounded-lg border-gray-300 bg-white px-4 py-2 text-gray-900 shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50"
                   >
                     <option value="">All Prices</option>
-                    <option value="budget">Under $25</option>
-                    <option value="standard">$25 - $100</option>
-                    <option value="premium">$100 - $500</option>
-                    <option value="luxury">Over $500</option>
+                    <option value="budget">Under EGP 25</option>
+                    <option value="standard">EGP 25 - EGP 100</option>
+                    <option value="premium">EGP 100 - EGP 500</option>
+                    <option value="luxury">Over EGP 500</option>
                   </select>
                 </div>
                 {filters.price_range && (
