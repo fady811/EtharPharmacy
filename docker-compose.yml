@@ -1,23 +1,6 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:13
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: ${DB_NAME:-etharpharmacy}
-      POSTGRES_USER: ${DB_USER:-etharpharmacy}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - app-network
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-etharpharmacy}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   backend:
     build:
       context: ./backend
@@ -28,9 +11,7 @@ services:
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-    depends_on:
-      db:
-        condition: service_healthy
+      - db_data:/app/db_data
     networks:
       - app-network
 
@@ -72,7 +53,7 @@ services:
       - app-network
 
 volumes:
-  postgres_data:
+  db_data:
   static_volume:
   media_volume:
   certbot_www:
