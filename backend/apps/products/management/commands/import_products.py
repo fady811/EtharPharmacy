@@ -50,8 +50,8 @@ class Command(BaseCommand):
                     skipped_count += 1
                     continue
 
-                # Column D (index 3): category name
-                category_name = row[3].value
+                # Column 10 (index 9): category name (التصنيف)
+                category_name = row[9].value
                 if not category_name or str(category_name).strip() == '':
                     skipped_count += 1
                     continue
