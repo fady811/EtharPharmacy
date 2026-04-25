@@ -8,8 +8,8 @@ interface CartStore {
   _hasHydrated: boolean;
   _setHasHydrated: (hydrated: boolean) => void;
   addItem: (product: Product, quantity?: number) => void;
-  removeItem: (productId: number) => void;
-  updateQuantity: (productId: number, quantity: number) => void;
+  removeItem: (productId: number, variationId?: number) => void;
+  updateQuantity: (productId: number, quantity: number, variationId?: number) => void;
   updateItemPrices: (productId: number, originalPrice: string, currentPrice: string, stockQuantity: number) => void;
   clearCart: () => void;
   isAtStockLimit: (productId: number) => boolean;
@@ -63,10 +63,10 @@ export const useCartStore = create<CartStore>()(
         }
       },
 
-      removeItem: (productId) => {
+      removeItem: (productId, variationId?: number) => {
         // Snapshot current state for rollback
         const previousItems = useCartStore.getState().items;
-        
+
         try {
           set((state) => ({
             items: state.items.filter((item) => item.product.id !== productId),
@@ -78,9 +78,9 @@ export const useCartStore = create<CartStore>()(
         }
       },
 
-      updateQuantity: (productId, quantity) => {
+      updateQuantity: (productId, quantity, variationId?: number) => {
         if (quantity <= 0) {
-          get().removeItem(productId);
+          get().removeItem(productId, variationId);
           return;
         }
 
