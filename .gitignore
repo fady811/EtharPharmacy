@@ -1,0 +1,47 @@
+# Environment files
+.env
+.env.local
+.env.production
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+.Python
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Django
+db.sqlite3
+db.sqlite3.*
+*.bak
+staticfiles/
+media/
+
+# Node
+node_modules/
+.next/
+out/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+postgres_data/
+certbot/
