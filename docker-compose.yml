@@ -57,9 +57,7 @@ volumes:
   static_volume:
   media_volume:
   certbot_www:
-    external: true
   certbot_certs:
-    external: true
 
 networks:
   app-network:
